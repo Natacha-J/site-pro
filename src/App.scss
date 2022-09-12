@@ -1,0 +1,183 @@
+/* GENERAL */
+@import './scss/_themes';
+$textColor: #cea62d;
+$mainColor: #6D071A;
+$secondaryColor: #905c50;
+$neutralColor: #C1ADA6;
+#root {
+    font-family: Constantia, Verdana, Geneva, Tahoma, sans-serif;
+    div#theme{
+      min-height: 100vh;
+    }
+  h1,h2 {
+    font-style: italic;
+    font-weight: bold;
+  }
+  a.link {
+    transition: background-color 0.7s;
+    &:hover {
+      transition: background-color 0.7s;
+    }
+  }
+  aside{
+    position: fixed; z-index: 10;
+    top: 0.5rem;
+    right: 0.5rem;
+    button.darkmode{
+      svg circle{
+        transform: translate(0);
+        transition: transform 0.6s;
+        &.dark {
+          transform: translate(38px);
+          transition: transform 0.6s;
+        }
+      }
+    }
+  }
+  #mainTitle {
+    text-shadow: none;
+    line-height: 2.7rem;
+  }
+  p, li {
+    font-size: 1rem;
+  }
+  header {
+    nav {
+      button {
+        border-radius: 0 2rem 2rem 0;
+        z-index: 1;
+      }
+      ul {
+        border-radius: 0 2rem 2rem 0;
+        padding-left: 3rem;
+        margin: 0.4rem 0.3rem 0.4rem -3rem;
+        &.menuClose {
+          transform: translate(-50rem);
+          transition: transform 1s;
+        }
+        &.menuOpen {
+          transition: transform 1s;
+          transform: translate(0);
+        }
+        li{
+          font-style: italic;
+          font-size: 1.2rem;
+        }
+        li, a {
+          transition: all 0.7s;
+          font-style: italic;
+          font-size: 1.2rem;
+          &:hover {
+            transform: rotate(1deg) scale(1.1);
+            transform-origin: left;
+            transition: transform 0.7s;
+          }
+        }
+      }
+    }
+  }
+  /* COMPONENTS */
+  .card {
+    min-width: 6rem;
+  }  
+  /* CAREER VIEW */
+  .animateCard {
+    opacity: 0;
+    animation: animateCardOpacity 1s forwards;
+  }
+  .animateCardDelay {
+    opacity: 0;
+    animation: animateCardOpacity 1s 1s forwards;
+  }
+  
+  /* SKILLS VIEW*/
+  li {
+    position: relative; 
+    svg {
+      height: 7rem;
+      width: 7rem;
+      circle {
+        stroke-width: 7px;
+        transform: translate(5px, 5px);
+        stroke-dasharray: 315;
+        stroke-linecap: round;        
+        &:nth-child(1) {
+          stroke-dashoffset: 0;
+        }
+        &:nth-child(2) {
+          animation: animationSkills 2s forwards;
+        }
+      }
+    }
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      font-weight: bold;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    } 
+  }
+  
+  /* CONTACT VIEW */
+  .contactIcon {
+    font-size: 3.5rem;
+    display: inline-block;
+    border-radius: 20% 0;
+    padding: 0 1rem 1rem 1rem;
+    width: 8rem;
+    margin: 0.4rem;
+    transition: all 0.7s;
+    &:hover {
+      transform: scale(1.1) translate(10px);
+      transition: all 0.7s;
+    }
+  }
+  
+  /* ANIMATIONS */
+  .titleAnimation {
+    animation: titleAnimation 3s ease-in-out 3s 2 forwards;
+    display: inline-block;
+  }
+  @keyframes animateCardOpacity {
+    from {
+      opacity: 0;
+      transform: scale(0.2);
+    }
+  
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes animationSkills {
+    from {
+      stroke-dashoffset: 315;
+    }
+    
+    to {
+      stroke-dashoffset: attr(stroke-dashoffset);
+    }
+  }
+  
+  @keyframes titleAnimation {
+    0%{
+      opacity: 1;
+      transform: translate(0);
+    }
+    25%{
+      opacity: 0;
+      transform: translate(0);
+    }
+    50%{
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    100%{
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+}
